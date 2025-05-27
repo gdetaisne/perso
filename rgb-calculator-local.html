@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RGB Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #colorBox {
+            width: 300px;
+            height: 150px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .slider {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h2>RGB Calculator</h2>
+    <div id="colorBox"></div>
+    <label>R: <input type="range" min="0" max="255" value="255" class="slider" id="rRange"></label><br>
+    <label>G: <input type="range" min="0" max="255" value="255" class="slider" id="gRange"></label><br>
+    <label>B: <input type="range" min="0" max="255" value="0" class="slider" id="bRange"></label><br>
+    <p id="rgbValue">rgb(255, 255, 0)</p>
+
+    <script>
+        const rRange = document.getElementById("rRange");
+        const gRange = document.getElementById("gRange");
+        const bRange = document.getElementById("bRange");
+        const colorBox = document.getElementById("colorBox");
+        const rgbValue = document.getElementById("rgbValue");
+
+        function updateColor() {
+            const r = rRange.value;
+            const g = gRange.value;
+            const b = bRange.value;
+            const rgb = `rgb(${r}, ${g}, ${b})`;
+            colorBox.style.backgroundColor = rgb;
+            rgbValue.textContent = rgb;
+        }
+
+        rRange.addEventListener("input", updateColor);
+        gRange.addEventListener("input", updateColor);
+        bRange.addEventListener("input", updateColor);
+
+        updateColor(); // initial
+    </script>
+</body>
+</html>
